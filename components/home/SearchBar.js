@@ -11,15 +11,17 @@ export default class SearchBar extends React.Component {
   }
 
   getMatches = () => {
-    fetch("http://localhost:8000/books/search_book/" + this.state.search).then(
-      console.log((res) => console.log(res.json()))
-    );
+    fetch("http://localhost:8000/books/search_book/" + this.state.search)
+      .then((res) => res.json())
+      .then((res) => this.setState({ matches: res.data.slice(0, 5) }));
   };
 
   handleChange = (e) => {
     this.setState({ search: e.target.value }, () => {
       if (this.state.search.length > 1) {
         this.getMatches();
+      } else {
+        this.setState({ matches: [] });
       }
     });
   };
@@ -34,6 +36,11 @@ export default class SearchBar extends React.Component {
           value={this.state.search}
           onChange={this.handleChange}
         />
+        {this.state.matches.map((match) => (
+          <div className={styles.match} key={match.id}>
+            <h3>{match.title}</h3>
+          </div>
+        ))}
       </div>
     );
   }

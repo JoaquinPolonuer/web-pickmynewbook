@@ -11,7 +11,7 @@ export default class SearchBar extends React.Component {
   }
 
   getMatches = () => {
-    fetch("http://localhost:8000/book-recommender/" + this.state.search).then(
+    fetch("http://localhost:8000/books/search_book/" + this.state.search).then(
       console.log((res) => console.log(res.json()))
     );
   };

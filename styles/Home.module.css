@@ -27,13 +27,20 @@
   font-weight: 500;
   color: white;
   font-family: "Rancho";
+  margin-bottom: 2vh;
 }
-
-.filter {
-  align-items: flex-start;
-  display: flex;
+.filters {
+  margin: 2vh;
+  align-self: flex-start;
 }
-
 .filterText {
   color: white;
+  font-size: 1.5rem;
+  align-items: center;
+  display: flex;
+}
+.filterCheckbox {
+  height: 2vh;
+  width: 2vh;
+  border: none;
 }

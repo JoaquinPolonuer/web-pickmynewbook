@@ -27,13 +27,16 @@ export default class Home extends React.Component {
 
         <main className={styles.main}>
           <h1 className={styles.title}>Pick my new book</h1>
-          <SearchBar />
+          <SearchBar
+            include_author={this.state.include_author}
+            include_saga={this.state.include_saga}
+          />
           <form className={styles.filters}>
             <label className={styles.filterText}>
               <input
+                className={styles.filterCheckbox}
                 name="include_saga"
                 type="checkbox"
-                className={styles.checkbox}
                 checked={this.state.include_saga}
                 onChange={this.handleCheckBox}
               />
@@ -42,6 +45,7 @@ export default class Home extends React.Component {
             <br />
             <label className={styles.filterText}>
               <input
+                className={styles.filterCheckbox}
                 name="include_author"
                 type="checkbox"
                 checked={this.state.include_author}

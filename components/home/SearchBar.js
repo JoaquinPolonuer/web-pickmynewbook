@@ -36,11 +36,13 @@ export default class SearchBar extends React.Component {
           value={this.state.search}
           onChange={this.handleChange}
         />
-        {this.state.matches.map((match) => (
-          <div className={styles.match} key={match.id}>
-            <h3>{match.title}</h3>
-          </div>
-        ))}
+        <div className={styles.matches}>
+          {this.state.matches.map((book) => (
+            <div className={styles.match} key={book.id}>
+              <p className={styles.matchTitle}>{book.title}</p>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

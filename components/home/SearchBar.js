@@ -16,6 +16,10 @@ export default class SearchBar extends React.Component {
       .then((res) => this.setState({ matches: res.data.slice(0, 5) }));
   };
 
+  goToRecommend = (book_id) => {
+    console.log(book_id, this.props.include_saga);
+  };
+
   handleChange = (e) => {
     this.setState({ search: e.target.value }, () => {
       if (this.state.search.length > 1) {
@@ -28,9 +32,9 @@ export default class SearchBar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.search}>
         <input
-          className={styles.search}
+          className={styles.searchInput}
           type="text"
           placeholder="I want a book similar to..."
           value={this.state.search}
@@ -38,7 +42,13 @@ export default class SearchBar extends React.Component {
         />
         <div className={styles.matches}>
           {this.state.matches.map((book) => (
-            <div className={styles.match} key={book.id}>
+            <div
+              onClick={(e) => {
+                this.goToRecommend(book.book_id);
+              }}
+              className={styles.match}
+              key={book.book_id}
+            >
               <p className={styles.matchTitle}>{book.title}</p>
             </div>
           ))}

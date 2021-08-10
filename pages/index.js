@@ -43,7 +43,7 @@ export default class Home extends React.Component {
               Include books from the same saga
             </label>
             <br />
-            <label className={styles.filterText}>
+            {/* <label className={styles.filterText}>
               <input
                 className={styles.filterCheckbox}
                 name="include_author"
@@ -52,7 +52,7 @@ export default class Home extends React.Component {
                 onChange={this.handleCheckBox}
               />
               Include books from the same author
-            </label>
+            </label> */}
           </form>
         </main>
       </div>

@@ -1,4 +1,10 @@
 .search {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.searchInput {
   width: 40rem;
   height: 2.5rem;
   padding: 1rem;
@@ -10,14 +16,22 @@
   font-size: 1rem;
 }
 .matches {
+  justify-items: center;
+  display: flex;
+  flex-direction: column;
   background-color: white;
-  margin: 0 !important;
-  margin-top: 0 !important;
+  border-radius: 1.25rem;
 }
 .matchTitle {
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0;
+  padding: 0;
+}
+.match {
+  padding: 1vh;
+  width: 70vh;
 }
 .match:hover {
+  border-radius: 1.25rem;
   background-color: #dadada;
+  cursor: pointer;
 }

@@ -17,6 +17,8 @@ export default class SearchBar extends React.Component {
   };
 
   goToRecommend = (book_id) => {
+    //navigate to /recommend?book_id=book_id
+    window.location.href = `/recommend?book_id=${book_id}`;
     console.log(book_id, this.props.include_saga);
   };
 

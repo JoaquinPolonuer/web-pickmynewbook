@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import styles from "../../styles/SearchBar.module.css";
 
 export default class SearchBar extends React.Component {
@@ -14,10 +15,6 @@ export default class SearchBar extends React.Component {
     fetch("http://localhost:8000/books/search_book/" + this.state.search)
       .then((res) => res.json())
       .then((res) => this.setState({ matches: res.data.slice(0, 5) }));
-  };
-
-  goToRecommend = (book_id) => {
-    console.log(book_id, this.props.include_saga);
   };
 
   handleChange = (e) => {
@@ -42,14 +39,10 @@ export default class SearchBar extends React.Component {
         />
         <div className={styles.matches}>
           {this.state.matches.map((book) => (
-            <div
-              onClick={(e) => {
-                this.goToRecommend(book.book_id);
-              }}
-              className={styles.match}
-              key={book.book_id}
-            >
-              <p className={styles.matchTitle}>{book.title}</p>
+            <div className={styles.match} key={book.book_id}>
+              <Link href={`/recommend?book_id=${book.book_id}`}>
+                <p className={styles.matchTitle}>{book.title}</p>
+              </Link>
             </div>
           ))}
         </div>

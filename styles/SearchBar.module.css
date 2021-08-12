@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 1.5vh;
 }
 
 .searchInput {
@@ -16,7 +17,6 @@
   font-size: 1rem;
 }
 .matches {
-  justify-items: center;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -28,7 +28,9 @@
 }
 .match {
   padding: 1vh;
+  padding-left: 1vw;
   width: 70vh;
+  text-align: start;
 }
 .match:hover {
   border-radius: 1.25rem;

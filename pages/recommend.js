@@ -15,12 +15,20 @@ export default withRouter(
       };
     }
 
+    static async getInitialProps({ query }) {
+      const { book_id } = query;
+      if (book_id) {
+        return { book_id };
+      }
+      return {};
+    }
+
     handleCheckBox = (e) => {
       this.setState({ [e.target.name]: !this.state[e.target.name] });
     };
 
     getRecommended = () => {
-      const book_id = this.props.router.asPath.split("book_id=")[1];
+      const book_id = this.props.router.query.book_id;
       fetch("http://localhost:8000/book-recommender/" + book_id)
         .then((res) => res.json())
         .then((res) =>
@@ -36,6 +44,7 @@ export default withRouter(
       this.getRecommended();
       // }
     }
+
     render() {
       return (
         <div className={styles.container}>

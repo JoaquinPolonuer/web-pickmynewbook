@@ -11,29 +11,48 @@ export default class SearchBar extends React.Component {
   }
 
   getMatches = () => {
-    fetch("http://localhost:8000/books/search_book/" + this.state.search).then(
-      console.log((res) => console.log(res.json()))
-    );
+    fetch("http://localhost:8000/books/search_book/" + this.state.search)
+      .then((res) => res.json())
+      .then((res) => this.setState({ matches: res.data.slice(0, 5) }));
+  };
+
+  goToRecommend = (book_id) => {
+    console.log(book_id, this.props.include_saga);
   };
 
   handleChange = (e) => {
     this.setState({ search: e.target.value }, () => {
       if (this.state.search.length > 1) {
         this.getMatches();
+      } else {
+        this.setState({ matches: [] });
       }
     });
   };
 
   render() {
     return (
-      <div>
+      <div className={styles.search}>
         <input
-          className={styles.search}
+          className={styles.searchInput}
           type="text"
           placeholder="I want a book similar to..."
           value={this.state.search}
           onChange={this.handleChange}
         />
+        <div className={styles.matches}>
+          {this.state.matches.map((book) => (
+            <div
+              onClick={(e) => {
+                this.goToRecommend(book.book_id);
+              }}
+              className={styles.match}
+              key={book.book_id}
+            >
+              <p className={styles.matchTitle}>{book.title}</p>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

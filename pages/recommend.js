@@ -4,12 +4,14 @@ import React from "react";
 import SearchBar from "../components/home/SearchBar";
 import BookCard from "../components/recommended/BookCard";
 import { useRouter, withRouter } from "next/router";
+import ReactLoading from "react-loading";
 
 export default withRouter(
   class Home extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+        loading: true,
         basedOn: {},
         recommended: [],
       };
@@ -35,6 +37,7 @@ export default withRouter(
           this.setState({
             basedOn: res.my_book,
             recommended: res.recommended.data.slice(0, 9),
+            loading: false,
           })
         );
     };
@@ -55,41 +58,43 @@ export default withRouter(
           </Head>
 
           <div className={styles.mainHead}>
-            <div className={styles.centralContainer}>
+            {!this.state.loading ? (
+              <>
+                <div className={styles.centralContainer}>
+                  <h1 className={styles.title}>
+                    If you liked{" "}
+                    <b className={styles.basedOnTitle}>
+                      {this.state.basedOn.title.split(" (")[0]}
+                    </b>
+                    , you might also like these
+                  </h1>
+                  <form className={styles.filters}>
+                    <SearchBar
+                      include_author={this.state.include_author}
+                      include_saga={this.state.include_saga}
+                    />
+                    <label className={styles.filterText}>
+                      <input
+                        className={styles.filterCheckbox}
+                        name="include_saga"
+                        type="checkbox"
+                        checked={this.state.include_saga}
+                        onChange={this.handleCheckBox}
+                      />
+                      Include books from the same saga
+                    </label>
+                  </form>
+                </div>
+              </>
+            ) : (
               <h1 className={styles.title}>
-                If you liked {this.state.basedOn.title}, you may like these as
-                well
+                Loading the best recommendations for you 📚
               </h1>
-
-              <form className={styles.filters}>
-                <SearchBar
-                  include_author={this.state.include_author}
-                  include_saga={this.state.include_saga}
-                />
-                <label className={styles.filterText}>
-                  <input
-                    className={styles.filterCheckbox}
-                    name="include_saga"
-                    type="checkbox"
-                    checked={this.state.include_saga}
-                    onChange={this.handleCheckBox}
-                  />
-                  Include books from the same saga
-                </label>
-                <br />
-                {/* <label className={styles.filterText}>
-              <input
-              className={styles.filterCheckbox}
-              name="include_author"
-              type="checkbox"
-              checked={this.state.include_author}
-              onChange={this.handleCheckBox}
-              />
-              Include books from the same author
-            </label> */}
-              </form>
-            </div>
+            )}
           </div>
+          {this.state.loading && (
+            <ReactLoading color="#EFB035" width={"10vw"} />
+          )}
           <main className={styles.bookContainer}>
             {this.state.recommended.map((book, i) => (
               <BookCard book={book} key={i} />

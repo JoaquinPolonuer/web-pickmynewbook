@@ -39,10 +39,14 @@ export default class SearchBar extends React.Component {
         />
         <div className={styles.matches}>
           {this.state.matches.map((book) => (
-            <div className={styles.match} key={book.book_id}>
-              <Link href={`/recommend?book_id=${book.book_id}`}>
-                <p className={styles.matchTitle}>{book.title}</p>
-              </Link>
+            <div
+              className={styles.match}
+              key={book.book_id}
+              onClick={() => {
+                window.location.href = `/recommend?book_id=${book.book_id}`;
+              }}
+            >
+              <p className={styles.matchTitle}>{book.title}</p>
             </div>
           ))}
         </div>

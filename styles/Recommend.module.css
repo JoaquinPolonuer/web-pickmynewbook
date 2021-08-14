@@ -57,3 +57,7 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.basedOnTitle {
+  font-weight: 100;
+  color: rgb(255, 250, 184);
+}

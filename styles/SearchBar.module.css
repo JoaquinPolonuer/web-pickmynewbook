@@ -37,3 +37,20 @@
   background-color: #dadada;
   cursor: pointer;
 }
+.filters {
+  margin: 2vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.filterText {
+  color: white;
+  font-size: 1.5rem;
+  align-items: center;
+  display: flex;
+}
+.filterCheckbox {
+  height: 2vh;
+  width: 2vh;
+  border: none;
+}

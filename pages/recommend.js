@@ -6,6 +6,7 @@ import BookCard from "../components/recommended/BookCard";
 import { useRouter, withRouter } from "next/router";
 import ReactLoading from "react-loading";
 import SearchForm from "../components/forms/SearchForm";
+import { API_URL } from "../constants";
 
 export default withRouter(
   class Home extends React.Component {
@@ -35,7 +36,7 @@ export default withRouter(
       const include_saga = this.props.router.query.include_saga;
 
       fetch(
-        `http://localhost:8000/book-recommender/${book_id}?include_saga=${include_saga}`
+        `${API_URL}/book-recommender/${book_id}?include_saga=${include_saga}`
       )
         .then((res) => res.json())
         .then((res) =>

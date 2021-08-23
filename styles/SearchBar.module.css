@@ -6,7 +6,7 @@
 }
 
 .searchInput {
-  width: 40rem;
+  width: 50vw;
   height: 2.5rem;
   padding: 1rem;
   margin: 0.5rem;
@@ -21,6 +21,7 @@
   flex-direction: column;
   background-color: white;
   border-radius: 1.25rem;
+  width: 100%;
 }
 .matchTitle {
   margin: 0;
@@ -29,7 +30,6 @@
 .match {
   padding: 1vh;
   padding-left: 1vw;
-  width: 70vh;
   text-align: start;
 }
 .match:hover {
@@ -50,7 +50,14 @@
   display: flex;
 }
 .filterCheckbox {
-  height: 2vh;
-  width: 2vh;
+  height: 25px;
+  width: 25px;
+  margin:10px;
   border: none;
+}
+
+@media (max-width: 750px) {
+  .searchInput {
+    width: 80vw;
+  }
 }

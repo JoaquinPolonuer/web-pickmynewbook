@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  margin: -0.5rem; /* quite hardcoded */
 }
 
 .centralContainer {
@@ -15,38 +16,29 @@
   flex-direction: column;
 }
 .mainHead {
-  background-color: teal;
+  background-color: rgb(39, 31, 16);
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 4vh;
+  margin-bottom: 1vh;
 }
 
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 3.5vw;
   font-weight: 500;
   color: white;
   font-family: "Rancho";
   margin-bottom: 2vh;
+  text-align: center;
 }
 
-.filterText {
-  color: white;
-  font-size: 1.5rem;
-  align-items: center;
-  display: flex;
-}
-.filterCheckbox {
-  height: 2vh;
-  width: 2vh;
-  border: none;
-}
 .bookContainer {
-  width: 80vw;
+  width: 90vw;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -54,5 +46,14 @@
 }
 .basedOnTitle {
   font-weight: 100;
-  color: rgb(255, 250, 184);
+  color: rgb(148, 148, 148);
+}
+
+@media (max-width: 750px) {
+  .title {
+    font-size: 10vw;
+  }
+  .centralContainer {
+    width: 90vw;
+  }
 }

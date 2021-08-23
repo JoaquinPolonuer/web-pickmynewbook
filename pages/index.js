@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import React from "react";
-import SearchBar from "../components/home/SearchBar";
+import SearchForm from "../components/forms/SearchForm";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -11,10 +11,6 @@ export default class Home extends React.Component {
       include_author: true,
     };
   }
-
-  handleCheckBox = (e) => {
-    this.setState({ [e.target.name]: !this.state[e.target.name] });
-  };
 
   render() {
     return (
@@ -27,33 +23,7 @@ export default class Home extends React.Component {
 
         <main className={styles.main}>
           <h1 className={styles.title}>Pick my new book</h1>
-          <SearchBar
-            include_author={this.state.include_author}
-            include_saga={this.state.include_saga}
-          />
-          <form className={styles.filters}>
-            <label className={styles.filterText}>
-              <input
-                className={styles.filterCheckbox}
-                name="include_saga"
-                type="checkbox"
-                checked={this.state.include_saga}
-                onChange={this.handleCheckBox}
-              />
-              Include books from the same saga
-            </label>
-            <br />
-            {/* <label className={styles.filterText}>
-              <input
-                className={styles.filterCheckbox}
-                name="include_author"
-                type="checkbox"
-                checked={this.state.include_author}
-                onChange={this.handleCheckBox}
-              />
-              Include books from the same author
-            </label> */}
-          </form>
+          <SearchForm />
         </main>
       </div>
     );

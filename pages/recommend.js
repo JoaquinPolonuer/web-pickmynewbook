@@ -5,6 +5,8 @@ import SearchBar from "../components/home/SearchBar";
 import BookCard from "../components/recommended/BookCard";
 import { useRouter, withRouter } from "next/router";
 import ReactLoading from "react-loading";
+import SearchForm from "../components/forms/SearchForm";
+import { API_URL } from "../constants";
 
 export default withRouter(
   class Home extends React.Component {
@@ -31,7 +33,11 @@ export default withRouter(
 
     getRecommended = () => {
       const book_id = this.props.router.query.book_id;
-      fetch("http://localhost:8000/book-recommender/" + book_id)
+      const include_saga = this.props.router.query.include_saga;
+
+      fetch(
+        `${API_URL}/book-recommender/${book_id}?include_saga=${include_saga}`
+      )
         .then((res) => res.json())
         .then((res) =>
           this.setState({
@@ -42,10 +48,7 @@ export default withRouter(
         );
     };
     componentDidMount() {
-      // console.log(this.props.router);
-      // if (book_id) {
       this.getRecommended();
-      // }
     }
 
     render() {
@@ -68,22 +71,7 @@ export default withRouter(
                     </b>
                     , you might also like these
                   </h1>
-                  <form className={styles.filters}>
-                    <SearchBar
-                      include_author={this.state.include_author}
-                      include_saga={this.state.include_saga}
-                    />
-                    <label className={styles.filterText}>
-                      <input
-                        className={styles.filterCheckbox}
-                        name="include_saga"
-                        type="checkbox"
-                        checked={this.state.include_saga}
-                        onChange={this.handleCheckBox}
-                      />
-                      Include books from the same saga
-                    </label>
-                  </form>
+                  <SearchForm />
                 </div>
               </>
             ) : (

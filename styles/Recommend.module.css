@@ -33,12 +33,7 @@
   font-family: "Rancho";
   margin-bottom: 2vh;
 }
-.filters {
-  margin: 2vh;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
+
 .filterText {
   color: white;
   font-size: 1.5rem;

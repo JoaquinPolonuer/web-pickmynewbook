@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styles from "../../styles/SearchBar.module.css";
+import { API_URL } from "../../constants";
 
 export default class SearchBar extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class SearchBar extends React.Component {
   }
 
   getMatches = () => {
-    fetch("http://localhost:8000/books/search_book/" + this.state.search)
+    fetch(`${API_URL}/books/search_book/${this.state.search}`)
       .then((res) => res.json())
       .then((res) => this.setState({ matches: res.data.slice(0, 5) }));
   };
@@ -43,7 +44,7 @@ export default class SearchBar extends React.Component {
               className={styles.match}
               key={book.book_id}
               onClick={() => {
-                window.location.href = `/recommend?book_id=${book.book_id}`;
+                window.location.href = `/recommend?book_id=${book.book_id}&include_saga=${this.props.include_saga}`;
               }}
             >
               <p className={styles.matchTitle}>{book.title}</p>

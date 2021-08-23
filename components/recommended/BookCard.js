@@ -18,6 +18,7 @@ export default class BookCard extends React.Component {
           <h3 className={styles.bookTitle}>{book.title}</h3>
           <p className={styles.bookAuthor}>By {book.authors}</p>
           <p className={styles.bookDescription}>{book.description}..</p>
+          <p className={styles.readMore}> Read More</p>
         </div>
       </div>
     );

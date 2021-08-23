@@ -1,18 +1,20 @@
 .bookCard {
   background-color: #f5f5f5;
-  width: 25rem;
-  height: 20vh;
+  width: 28vw;
+  height: 30vh;
   border-radius: 2vh;
   box-shadow: 0px 0px 1vh 0px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: row;
 
   padding: 1vh;
-  margin: 1rem;
+  margin: 0.6rem;
 }
 .bookCard:hover {
   background-color: #d4d4d4;
   cursor: pointer;
+  width: 29vw;
+  height: 31vh;
 }
 
 .bookImageDiv {
@@ -21,7 +23,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* center content vertically */
+  padding: 0.7vh;
 }
 .bookImage {
   height: 95%;
@@ -34,12 +36,60 @@
   overflow: hidden;
 }
 .bookTitle {
-  margin: 0;
-}
-.bookDescription {
-  text-align: justify;
-  margin-top: 1vh;
+  margin: 0;  
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .bookAuthor {
   margin-top: 1vh;
+  margin-top: 0.5vh;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.bookDescription {
+  margin-top: 0.5vh;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.readMore{
+  font-weight: bold;
+  color: #589bff;
+  text-decoration: none;
+  cursor: pointer;
+  text-decoration-line: underline;
+
+}
+
+@media (max-width: 750px) {
+  .bookCard {
+    background-color: #f5f5f5;
+    width: 90vw;
+    height: 30vh;
+  }
+  .bookCard:hover {
+    background-color: #d4d4d4;
+    cursor: pointer;
+    width: 90vw;
+    height: 31vh;
+  }
+  .bookImage {
+    height: 70%;
+  }
+  .bookDescription {
+    margin-top: 0.5vh;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }

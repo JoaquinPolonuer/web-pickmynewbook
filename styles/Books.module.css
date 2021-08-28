@@ -10,24 +10,30 @@
   justify-content: center;
   padding: 5%;
   width: 65%;
-  height: 100vh;
   font-family: "Raleway";
   color: #5a5a5a;
 }
 
-.bookcover {
+.bookcoverContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  right: 0;
   background-color: #edab36;
   width: 35%;
   height: 100vh;
 }
 
+.bookcover {
+  width: 20vw;
+}
+
 .title {
   font-family: "Rancho";
-  font-size: 6em;
+  font-size: 5em;
   color: #424242;
+  line-height: 1;
 }
 
 .authortitle {
@@ -42,7 +48,6 @@
 
 .buttonsContainer {
   display: flex;
-  justify-content: space-around;
   flex-direction: row;
   margin-top: 4%;
 }

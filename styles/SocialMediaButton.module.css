@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 30%;
+  height: 9vh;
+  padding: 2%;
+  border-radius: 1.4em;
+  box-shadow: 1px 1px 15px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 1px 15px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 15px -1px rgba(0, 0, 0, 0.75);
+}
+
+.container:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+.image {
+  width: 20%;
+}

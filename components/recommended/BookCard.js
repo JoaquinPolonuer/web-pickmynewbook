@@ -17,7 +17,11 @@ export default class BookCard extends React.Component {
         <div className={styles.bookInfo}>
           <h3 className={styles.bookTitle}>{book.title}</h3>
           <p className={styles.bookAuthor}>By {book.authors}</p>
-          <p className={styles.bookDescription}>{book.description}..</p>
+          {book.description !== "" ? (
+            <p className={styles.bookDescription}>{book.description}</p>
+          ) : (
+            <p>Description unavailable</p>
+          )}
           <p className={styles.readMore}> Read More</p>
         </div>
       </div>

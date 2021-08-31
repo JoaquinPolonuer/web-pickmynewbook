@@ -19,7 +19,6 @@
 
 .bookImageDiv {
   height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,11 +31,12 @@
 }
 .bookInfo {
   padding: 1vh;
+  width: 70%;
   margin-bottom: 0.5vh;
   overflow: hidden;
 }
 .bookTitle {
-  margin: 0;  
+  margin: 0;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 1; /* number of lines to show */
@@ -59,14 +59,15 @@
   -webkit-line-clamp: 4; /* number of lines to show */
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-bottom: 1vh;
 }
-.readMore{
+.readMore {
   font-weight: bold;
   color: #589bff;
   text-decoration: none;
   cursor: pointer;
   text-decoration-line: underline;
-
+  margin: 0;
 }
 
 @media (max-width: 750px) {
@@ -89,6 +90,17 @@
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 6; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (max-height: 620px) {
+  .bookDescription {
+    margin-top: 0.5vh;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

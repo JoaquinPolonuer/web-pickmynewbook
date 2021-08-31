@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import styles from "../../styles/SearchBar.module.css";
 import { API_URL } from "../../constants";
 

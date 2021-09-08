@@ -6,8 +6,7 @@ import SocialMediaButton from "../../components/books/SocialMediaButton";
 import styles from "./../../styles/Books.module.css";
 
 import GoodreadsImage from "../../public/socialmedia/goodreads.png";
-import KindleImage from "../../public/socialmedia/kindle.png";
-import PlayBooksImage from "../../public/socialmedia/playbooks.png";
+import ReactLoading from "react-loading";
 
 export default withRouter(
   class Books extends React.Component {
@@ -15,6 +14,7 @@ export default withRouter(
       super(props);
       this.state = {
         book_info: {},
+        loading: true
       };
     }
 
@@ -33,6 +33,7 @@ export default withRouter(
         .then((res) =>
           this.setState({
             book_info: res.data,
+            loading: false
           })
         );
     }
@@ -40,23 +41,35 @@ export default withRouter(
     render() {
       const { book_info } = this.state;
       return (
+
         <div className={styles.container}>
-          <div className={styles.content}>
-            <span className={styles.title}>{book_info.title}</span>
-            <span className={styles.authortitle}>{book_info.authors}</span>
-            <span className={styles.description}>{book_info.description}</span>
-            <div className={styles.buttonsContainer}>
-              <SocialMediaButton
-                url=""
-                title="View on Goodreads"
-                icon={GoodreadsImage}
-                url={`https://www.goodreads.com/book/show/${book_info.goodreads_book_id}`}
-              />
-            </div>
-          </div>
-          <div className={styles.bookcoverContainer}>
-            <img className={styles.bookcover} src={book_info.image_url} />
-          </div>
+          {!this.state.loading ? (
+            <>
+              <div className={styles.content}>
+                <span className={styles.title}>{book_info.title}</span>
+                <span className={styles.authortitle}>{book_info.authors}</span>
+                <p className={styles.description}>{book_info.description}</p>
+                <div className={styles.buttonsContainer}>
+                  <SocialMediaButton
+                    url=""
+                    title="View on Goodreads"
+                    icon={GoodreadsImage}
+                    url={`https://www.goodreads.com/book/show/${book_info.goodreads_book_id}`}
+                  />
+                </div>
+              </div>
+              <div className={styles.bookcoverContainer}>
+                <img className={styles.bookcover} src={book_info.image_url} />
+              </div>
+            </>
+          ) : (
+            this.state.loading && (
+              <div className={styles.loadingContainer}>
+                <ReactLoading className={styles.loading} color="#EFB035" width={"20vw"} />
+              </div>
+            )
+          )}
+
         </div>
       );
     }

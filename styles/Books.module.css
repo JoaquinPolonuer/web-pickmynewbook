@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5%;
+  font-family: "Raleway";
+  color: #5a5a5a;
+}
+
+.bookcoverContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  background-color: #edab36;
+  width: 35%;
+  padding: 5%;
+}
+
+.bookcover {
+  width: 22vw;
+}
+
+
+.title {
+  font-family: "Rancho";
+  font-size: 5em;
+  color: #424242;
+  line-height: 1;
+}
+
+.authortitle {
+  font-size: 2.3em;
+  color: #505050;
+}
+
+.description {
+  margin-top: 3%;
+  font-size: 1.2em;
+  text-align: justify;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4%;
+}
+
+.loadingContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.loading{
+  /* display: flex;
+  justify-content: center; */
+
+}
+
+@media (max-width: 750px) {
+  .title {
+    font-size: 14vw;
+  }
+  .authortitle {
+    padding-top: 1vh;
+    font-size: 8vw;
+    color: #505050;
+  }
+  .container {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    justify-items: flex-start;
+    height: 100%;
+  }
+  .bookcoverContainer {
+    background-color: #edab36;
+    width: 100%;
+    height: 30vh;
+    
+  }
+  .bookcover {
+    width: 32vw;
+  }
+}

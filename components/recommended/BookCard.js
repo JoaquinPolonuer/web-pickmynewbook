@@ -7,10 +7,14 @@ export default class BookCard extends React.Component {
     this.state = {};
   }
 
+  goToBook = () => {
+    window.location.href = `/book/${this.props.book.book_id}`;
+  };
+
   render() {
     const book = this.props.book;
     return (
-      <div className={styles.bookCard}>
+      <div className={styles.bookCard} onClick={this.goToBook}>
         <div className={styles.bookImageDiv}>
           <img className={styles.bookImage} src={book.image_url} />
         </div>

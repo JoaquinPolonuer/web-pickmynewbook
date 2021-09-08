@@ -51,7 +51,6 @@ export default withRouter(
                 <p className={styles.description}>{book_info.description}</p>
                 <div className={styles.buttonsContainer}>
                   <SocialMediaButton
-                    url=""
                     title="View on Goodreads"
                     icon={GoodreadsImage}
                     url={`https://www.goodreads.com/book/show/${book_info.goodreads_book_id}`}

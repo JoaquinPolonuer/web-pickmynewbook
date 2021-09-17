@@ -9,13 +9,20 @@ export default class SearchBar extends React.Component {
     this.state = {
       search: "",
       matches: [],
+      current_book_id: 1,
     };
   }
 
   getMatches = () => {
     fetch(`${API_URL}/books/search_book/${this.state.search}`)
       .then((res) => res.json())
-      .then((res) => this.setState({ matches: res.data.slice(0, 5) }));
+      .then((res) =>
+        this.setState({
+          matches: res.data.slice(0, 5),
+          current_book_id: res.data[0].book_id,
+        })
+      )
+      .then(() => this.props.onChange(this.state.current_book_id));
   };
 
   handleChange = (e) => {

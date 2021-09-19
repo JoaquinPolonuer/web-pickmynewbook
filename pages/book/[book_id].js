@@ -26,14 +26,26 @@ export default withRouter(
       return {};
     }
 
+    parseBookInfo = (book, callback) =>{
+      var description = book.description
+      var first_word = book.description.split(" ")[0]
+      var length_first_word = first_word.length
+      var description_without_first_word = description.substring(length_first_word+1)
+      var index_of_repeated_first_word = description_without_first_word.indexOf(first_word)
+
+      book.description = description_without_first_word.substring(index_of_repeated_first_word)
+      callback(book)
+    }
     componentDidMount() {
       const book_id = this.props.router.query.book_id;
       fetch(`${API_URL}/books/book_by_id/${book_id}`)
         .then((res) => res.json())
         .then((res) =>
-          this.setState({
-            book_info: res.data,
-            loading: false
+          this.parseBookInfo(res.data, (book)=>{
+            this.setState({
+              book_info: book,
+              loading: false
+            })
           })
         );
     }

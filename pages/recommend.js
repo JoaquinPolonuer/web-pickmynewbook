@@ -1,9 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Recommend.module.css";
 import React from "react";
-import SearchBar from "../components/home/SearchBar";
 import BookCard from "../components/recommended/BookCard";
-import { useRouter, withRouter } from "next/router";
+import { withRouter } from "next/router";
 import ReactLoading from "react-loading";
 import SearchForm from "../components/forms/SearchForm";
 import { API_URL } from "../constants";

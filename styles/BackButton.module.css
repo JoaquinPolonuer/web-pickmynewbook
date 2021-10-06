@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  background-color: rgb(39, 31, 16);
+  padding-top: 2%;
+  padding-left: 3vh;
+}
+
+.backButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  width:100%;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  margin-left: 1vh;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 0.4vh;
+  white-space: nowrap;
+}
+
+.image {
+  width: 1.3vw;
+}
